@@ -12,6 +12,10 @@ gulp.task('browser-sync', function(){
     });
 });
 
+gulp.task('bs-reload', function() {
+    browserSync.reload();
+});
+
 gulp.task('minify-css', function () {
     gulp.src(['./resource/css/app.css'])
         .pipe(minifyCSS())
@@ -26,11 +30,11 @@ gulp.task('compress', function () {
     );
 });
 
-gulp.task('default', ['browser-sync','minify-css','compress'], function(){
+gulp.task('watch', ['browser-sync','minify-css','compress'], function () {
     gulp.watch([
-        './public_html/css/*.css',
-        './public_html/js/*.js'
-    ], function(){
-        browserSync.reload();
-    });
+        './resource/css/*.css',
+        './resource/js/*.js'
+    ], ['minify-css','compress', 'bs-reload']);
 });
+
+gulp.task('default', ['minify-css','compress']);

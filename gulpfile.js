@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var minifyCSS = require('gulp-minify-css');
 var browserSync = require('browser-sync');
 
 gulp.task('browser-sync', function(){
@@ -10,7 +11,14 @@ gulp.task('browser-sync', function(){
     });
 });
 
-gulp.task('default', ['browser-sync'], function(){
+gulp.task('minify-css', function () {
+    gulp.src(['./resource/css/app.css'])
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('./public_html/css')
+    );
+});
+
+gulp.task('default', ['browser-sync','minify-css'], function(){
     gulp.watch([
         './public_html/css/*.css',
         './public_html/js/*.js'

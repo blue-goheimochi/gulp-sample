@@ -10,4 +10,8 @@ gulp.task('browser-sync', function(){
     });
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['browser-sync'], function(){
+    gulp.watch(['./public_html/css/app.css'], function(){
+        browserSync.reload();
+    });
+});

@@ -1,3 +1,1 @@
-function btnClick() {
-  alert('Hello!');
-}
+function btnClick(){alert("Hello!")}

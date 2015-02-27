@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 
-gulp.task('default', function(){
+gulp.task('browser-sync', function(){
     browserSync({
         server: {
             baseDir: "./public_html",
@@ -9,3 +9,5 @@ gulp.task('default', function(){
         }
     });
 });
+
+gulp.task('default', ['browser-sync']);
